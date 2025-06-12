@@ -8,11 +8,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
 	<flow name="test-connectivityFlow" doc:id="0eb3317b-d144-4f70-b4a2-8da757acb5ac" >
-		<scheduler doc:name="Scheduler" doc:id="d914f37a-041e-4761-94c5-cf6ef82255b0" >
-			<scheduling-strategy >
-				<fixed-frequency frequency="10" timeUnit="HOURS"/>
-			</scheduling-strategy>
-		</scheduler>
+		<http:listener doc:name="Listener" doc:id="d933ce6c-7d87-48ee-a77f-b84d2abb21c0" config-ref="HTTP_Listener_config" path="/test"/>
 		<logger level="INFO" doc:name="Logger" doc:id="d97d0b40-9ce7-4954-8f89-7a90d47edade" message="start testing"/>
 		<http:request method="GET" doc:name="Request" doc:id="77d403a7-ef18-4efd-84bc-02f5719728d0" url="https://sandbox-api-senderid.comreg.ie/senderid-list/csv">
 			<http:headers ><![CDATA[#[output application/java
